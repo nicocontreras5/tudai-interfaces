@@ -95,7 +95,7 @@ function loadPage() {
 
     function fotoSinFiltro() {
         let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
-        ctx.drawImage(img, 0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
+        ctx.drawImage(imagenOriginal, 0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
         
     }
     document.getElementById("volver").addEventListener("click", fotoSinFiltro);
