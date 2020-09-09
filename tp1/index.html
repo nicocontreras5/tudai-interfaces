@@ -14,7 +14,7 @@
 </head>
 <body>
 	
-	<canvas id="entregable1"></canvas>
+	<canvas id="entregable1" width="1000" height="600"></canvas>
 	
 	<div id="herramientas">
 		<h2>herramientas</h2>
@@ -25,17 +25,18 @@
 		<button onclick="document.querySelector('#cargarFoto').click();">select foto</button>
 		<input id="cargarFoto" type="file" style="display: none;" accept="image/*">
 		
-		<select name="filtros" id="filtros">
-			<option value="default">filtros..</option>
+		<label>filtros.. <select name="filtros" id="filtros"></label>
+			<option value="default">default</option>
 			<option value="negativo">negativo</option>
 			<option value="binarizacion">binarizacion</option>
 			<option value="sepia">sepia</option>
 			<option value="grises">grises</option>
 			<option value="brillo">brillo</option>
+			<option value="saturado">saturado</option>
 		</select>
 		<button id="descartar">descartar</button>
 		<button id="guardar">guardar</button>
-		<button id="volver">voolver</button>
+	
 	</div>
 
 </body>

@@ -6,23 +6,17 @@ function loadPage() {
     let ctx = canvas.getContext("2d");
     let imagenOriginal;
 
-
     function descartarFoto() {
         document.getElementById("cargarFoto").value = "";
-        crearCanvas();
+        limpiarcanvas();
 
     }
 
     document.getElementById("descartar").addEventListener("click", descartarFoto);
 
-    function crearCanvas() {
-        canvas.width = 1000;
-        canvas.height = 600;
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+    function limpiarcanvas() {
+        ctx.clearRect(0, 0, 1000, 600);
     }
-
-    crearCanvas();
 
     function startDraw(e) {
         dibujando = true;
@@ -67,7 +61,7 @@ function loadPage() {
         if (document.getElementById("cargarFoto").value != "") {
             let file = e.target.files[0];
 
-            crearCanvas();
+            limpiarcanvas();
             let reader = new FileReader();
             reader.readAsDataURL(file); // this is reading as data url
 
@@ -98,9 +92,7 @@ function loadPage() {
         ctx.drawImage(imagenOriginal, 0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
         
     }
-    document.getElementById("volver").addEventListener("click", fotoSinFiltro);
     
-
     function filtroNegativo() {
         let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
         let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
@@ -130,7 +122,6 @@ function loadPage() {
         }
         ctx.putImageData(imageData, 0, 0);
     }
-
 
     function filtroSepia() {
         let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
@@ -196,6 +187,111 @@ function loadPage() {
 
     }
 
+    function filtroSaturado() {
+        let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
+        let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
+        let saturado = prompt('ingrese el valor de saturado');
+        saturado = parseInt(saturado, 10);
+
+        for (let y = 0; y < imageData.height; y++) {
+            for (let x = 0; x < imageData.width; x++) {
+                let index = (x + imageData.width * y) * 4;
+                let colorRgb =[imageData.data[index + 0],imageData.data[index + 1],imageData.data[index + 2]]
+                let colorHsv= RGBtoHSV (colorRgb);
+                colorHsv[1] *= saturado;
+                let colorfinal= HSVtoRGB(colorHsv);
+                imageData.data[index + 0] = colorfinal[0];
+                imageData.data[index + 1] = colorfinal[1];
+                imageData.data[index + 2] = colorfinal[2];
+            }
+        }
+        ctx.putImageData(imageData, 0, 0);
+    }
+
+    RGBtoHSV= function(color) {
+        var r,g,b,h,s,v;
+        r= color[0];
+        g= color[1];
+        b= color[2];
+        min = Math.min( r, g, b );
+        max = Math.max( r, g, b );
+
+
+        v = max;
+        delta = max - min;
+        if( max != 0 )
+            s = delta / max;        // s
+        else {
+            // r = g = b = 0        // s = 0, v is undefined
+            s = 0;
+            h = -1;
+            return [h, s, undefined];
+        }
+        if( r === max )
+            h = ( g - b ) / delta;      // between yellow & magenta
+        else if( g === max )
+            h = 2 + ( b - r ) / delta;  // between cyan & yellow
+        else
+            h = 4 + ( r - g ) / delta;  // between magenta & cyan
+        h *= 60;                // degrees
+        if( h < 0 )
+            h += 360;
+        if ( isNaN(h) )
+            h = 0;
+        return [h,s,v];
+    };
+
+    HSVtoRGB= function(color) {
+        var i;
+        var h,s,v,r,g,b;
+        h= color[0];
+        s= color[1];
+        v= color[2];
+        if(s === 0 ) {
+            // achromatic (grey)
+            r = g = b = v;
+            return [r,g,b];
+        }
+        h /= 60;            // sector 0 to 5
+        i = Math.floor( h );
+        f = h - i;          // factorial part of h
+        p = v * ( 1 - s );
+        q = v * ( 1 - s * f );
+        t = v * ( 1 - s * ( 1 - f ) );
+        switch( i ) {
+            case 0:
+                r = v;
+                g = t;
+                b = p;
+                break;
+            case 1:
+                r = q;
+                g = v;
+                b = p;
+                break;
+            case 2:
+                r = p;
+                g = v;
+                b = t;
+                break;
+            case 3:
+                r = p;
+                g = q;
+                b = v;
+                break;
+            case 4:
+                r = t;
+                g = p;
+                b = v;
+                break;
+            default:        // case 5:
+                r = v;
+                g = p;
+                b = q;
+                break;
+        }
+        return [r,g,b];
+    }
 
     function filtros() {
         let filtro = document.getElementById("filtros").value;
@@ -210,6 +306,10 @@ function loadPage() {
             filtroGrises();
         } else if (filtro == "brillo") {
             filtroBrillo();
+        } else if (filtro == "saturado") {
+            filtroSaturado();
+        }else if (filtro == "default") {
+            fotoSinFiltro();
         }
 
     }
@@ -231,7 +331,6 @@ function loadPage() {
 
     }
     document.getElementById("guardar").addEventListener("click", guardarFoto);
-
 
 }
 document.addEventListener("DOMContentLoaded", loadPage);
