@@ -9,16 +9,16 @@ body{
     border: 1px;
     border-style: solid;
     border-color: black;
+    margin-left: 8%;
   
 }
 
-#herramientas{
+.herramientas{
   
-    background-color: rgba(70, 70, 70, 0.384);
-}
+margin-left: 20%;}
 
 h1{
     color: orange;
     font-size: 300%;
-    margin-left: 35%;
+    margin-left: 40%;
 }
