@@ -6,6 +6,7 @@ function loadPage() {
     let ctx = canvas.getContext("2d");
     let imagenOriginal;
 
+
     function crearCanvas() {
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -13,20 +14,18 @@ function loadPage() {
     crearCanvas();
 
     function descartarFoto() {
+
         document.getElementById("cargarFoto").value = "";
+        document.getElementById("select-saturado").classList.add("d-none");
+        document.getElementById("select-brillo").classList.add("d-none");
+
+        document.getElementById("filtros").classList.add("d-none");
+        document.getElementById("filtros-select").value="default";
         limpiarcanvas();
         imagenOriginal= "";
     }
+    document.getElementById("descartar").addEventListener("click", descartarFoto);
     
-    function asignarEventoBorrar() {
-        let btns_borrar= document.getElementsByClassName("descartar"); 
-        for (let i = 0; i < btns_borrar.length; i++) {
-            btns_borrar[i].addEventListener("click", descartarFoto);
-        }
-    }
-     asignarEventoBorrar();
-
-
     function limpiarcanvas() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
@@ -77,7 +76,14 @@ function loadPage() {
     canvas.addEventListener("mousemove", draw);
 
     function cargarFoto(e) {
-        if (document.getElementById("cargarFoto").value != "") {
+
+      
+        if (document.getElementById("foto-input").value != "") {
+            document.getElementById("filtros-select").value="default";
+            document.getElementById("select-saturado").classList.add("d-none");
+            document.getElementById("select-brillo").classList.add("d-none");
+
+            document.getElementById("filtros").classList.remove("d-none");
             let file = e.target.files[0];
 
             limpiarcanvas();
@@ -104,7 +110,7 @@ function loadPage() {
         document.getElementById("filtros").value = "default";
 
     }
-    document.getElementById("cargarFoto").addEventListener("change", cargarFoto);
+    document.getElementById("foto-input").addEventListener("change", cargarFoto);
 
     function fotoSinFiltro() {
         limpiarcanvas();
@@ -163,29 +169,30 @@ function loadPage() {
     }
 
     function filtroBrillo() {
-        let contraste = prompt('ingrese el valor de brillo');
-        if (contraste) {
-            contraste = parseInt(contraste, 10);
-            fotoSinFiltro();
-            let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
-            let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
-            let factor = (259 * (contraste + 255)) / (255 * (259 - contraste));
-            for (let y = 0; y < imageData.height; y++) {
-                for (let x = 0; x < imageData.width; x++) {
-                    let index = (x + imageData.width * y) * 4;
 
-                    imageData.data[index + 0] = factor * (imageData.data[index + 0] - 128) + 128;
-                    imageData.data[index + 1] = factor * (imageData.data[index + 1] - 128) + 128;
-                    imageData.data[index + 2] = factor * (imageData.data[index + 2] - 128) + 128;
+            let contraste = document.getElementById("cant-brillo").value;
+            document.getElementById("select-brillo").classList.remove("d-none");
+            contraste=  parseInt(contraste, 10);
+            fotoSinFiltro();
+            console.log(contraste);
+            if (contraste>0) {
+                let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
+                let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
+                let factor = (259 * (contraste + 255)) / (255 * (259 - contraste));
+                for (let y = 0; y < imageData.height; y++) {
+                    for (let x = 0; x < imageData.width; x++) {
+                        let index = (x + imageData.width * y) * 4;
+    
+                        imageData.data[index + 0] = factor * (imageData.data[index + 0] - 128) + 128;
+                        imageData.data[index + 1] = factor * (imageData.data[index + 1] - 128) + 128;
+                        imageData.data[index + 2] = factor * (imageData.data[index + 2] - 128) + 128;
+                    }
                 }
+                ctx.putImageData(imageData, 0, 0);
             }
-            ctx.putImageData(imageData, 0, 0);
-
-        }else{
-            fotoSinFiltro();
-            document.getElementById("filtros").value= "default";
-        }
     }
+    document.getElementById("cant-brillo").addEventListener("change", filtroBrillo);
+
 
     function filtroBinario() {
         fotoSinFiltro();
@@ -216,33 +223,41 @@ function loadPage() {
     }
 
     function filtroSaturado() {
-        let saturado = prompt('ingrese el valor de saturado');
-        if (saturado) {
+       
             fotoSinFiltro();
-
-            let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
-            let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
-            saturado = parseInt(saturado, 10);
-
-            for (let y = 0; y < imageData.height; y++) {
-                for (let x = 0; x < imageData.width; x++) {
-                    let index = (x + imageData.width * y) * 4;
-                    let colorRgb = [imageData.data[index + 0], imageData.data[index + 1], imageData.data[index + 2]]
-                    let colorHsv = RGBtoHSV(colorRgb);
-                    colorHsv[1] *= saturado;
-                    let colorfinal = HSVtoRGB(colorHsv);
-                    imageData.data[index + 0] = colorfinal[0];
-                    imageData.data[index + 1] = colorfinal[1];
-                    imageData.data[index + 2] = colorfinal[2];
+            let saturado = document.getElementById("cant-saturado").value;
+            saturado= parseInt(saturado, 10);
+            document.getElementById("select-saturado").classList.remove("d-none");
+            
+            if (saturado>0) {
+                let scaleImage = Math.min(canvas.width / imagenOriginal.width, canvas.height / imagenOriginal.height);
+                let imageData = ctx.getImageData(0, 0, imagenOriginal.width * scaleImage, imagenOriginal.height * scaleImage);
+    
+                for (let y = 0; y < imageData.height; y++) {
+                    for (let x = 0; x < imageData.width; x++) {
+                        let index = (x + imageData.width * y) * 4;
+                        let colorRgb = [imageData.data[index + 0], imageData.data[index + 1], imageData.data[index + 2]]
+                        let colorHsv = RGBtoHSV(colorRgb);
+                        colorHsv[1] *= saturado;
+                        let colorfinal = HSVtoRGB(colorHsv);
+                        imageData.data[index + 0] = colorfinal[0];
+                        imageData.data[index + 1] = colorfinal[1];
+                        imageData.data[index + 2] = colorfinal[2];
+                    }
                 }
+                ctx.putImageData(imageData, 0, 0);
+                
             }
-            ctx.putImageData(imageData, 0, 0);
-
-        } else {
-            fotoSinFiltro();
-            document.getElementById("filtros").value= "default";
-        }
     }
+    document.getElementById("cant-saturado").addEventListener("change", filtroSaturado);
+
+
+    function clickInput() {
+        confirm("Bienvenido! Las imagenes que superen la reoslucion 1000 X 400 solo descargara la imagen con filtro, sin los trazos de dibujo!!");
+        document.querySelector('#foto-input').click();
+    }
+    document.querySelector('#btn-cargar-foto').addEventListener("click", clickInput);
+
 
     RGBtoHSV = function (color) {
         var r, g, b, h, s, v;
@@ -330,7 +345,9 @@ function loadPage() {
     }
 
     function filtros() {
-        let filtro = document.getElementById("filtros").value;
+        let filtro = document.getElementById("filtros-select").value;
+        document.getElementById("select-saturado").classList.add("d-none");
+        document.getElementById("select-brillo").classList.add("d-none");
         if (filtro == "negativo") {
             filtroNegativo();
         } else if (filtro == "binarizacion") {
