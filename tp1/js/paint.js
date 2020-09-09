@@ -15,7 +15,7 @@ function loadPage() {
 
     function descartarFoto() {
 
-        document.getElementById("cargarFoto").value = "";
+        document.getElementById("foto-input").value = "";
         document.getElementById("select-saturado").classList.add("d-none");
         document.getElementById("select-brillo").classList.add("d-none");
 
@@ -254,7 +254,7 @@ function loadPage() {
 
     function clickInput() {
         
-        let confir= confirm("Bienvenido! Las imagenes que superen la reoslucion 1000 X 400 solo descargara la imagen con filtro, sin los trazos de dibujo!!");
+        let confir= confirm("Bienvenido! Las imagenes que superen la resolucion 1000 X 400 solo descargara la imagen con filtro, sin los trazos de dibujo!!");
         if (confir) {
             
             document.querySelector('#foto-input').click();
