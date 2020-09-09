@@ -15,7 +15,7 @@ function loadPage() {
     function descartarFoto() {
         document.getElementById("cargarFoto").value = "";
         limpiarcanvas();
-
+        imagenOriginal= "";
     }
     
     function asignarEventoBorrar() {
@@ -31,7 +31,7 @@ function loadPage() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        imagenOriginal= "";
+
     }
 
     function startDraw(e) {
