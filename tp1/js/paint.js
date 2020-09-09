@@ -17,13 +17,21 @@ function loadPage() {
         limpiarcanvas();
 
     }
+    
+    function asignarEventoBorrar() {
+        let btns_borrar= document.getElementsByClassName("descartar"); 
+        for (let i = 0; i < btns_borrar.length; i++) {
+            btns_borrar[i].addEventListener("click", descartarFoto);
+        }
+    }
+     asignarEventoBorrar();
 
-    document.getElementById("descartar").addEventListener("click", descartarFoto);
 
     function limpiarcanvas() {
-        ctx.clearRect(0, 0, 1000, 600);
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
+        imagenOriginal= "";
     }
 
     function startDraw(e) {
