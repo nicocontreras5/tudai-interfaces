@@ -1,12 +1,30 @@
 
+body{
+    background-image: url("imagenes/fondo.jpg");
+    background-repeat: no-repeat;
+    color: white;
+}
+
 #entregable1{
     border: 1px;
     border-style: solid;
     border-color: black;
-    margin: 1%;
+  
 }
 
 #herramientas{
   
     background-color: rgba(70, 70, 70, 0.384);
+}
+
+h1{
+    color: orange;
+    font-size: 450%;
+    text-align: center;
+}
+
+
+
+.herramientas-paint{
+    margin-top: 10%;
 }
