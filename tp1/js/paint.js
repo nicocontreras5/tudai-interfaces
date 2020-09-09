@@ -253,8 +253,12 @@ function loadPage() {
 
 
     function clickInput() {
-        confirm("Bienvenido! Las imagenes que superen la reoslucion 1000 X 400 solo descargara la imagen con filtro, sin los trazos de dibujo!!");
-        document.querySelector('#foto-input').click();
+        
+        let confir= confirm("Bienvenido! Las imagenes que superen la reoslucion 1000 X 400 solo descargara la imagen con filtro, sin los trazos de dibujo!!");
+        if (confir) {
+            
+            document.querySelector('#foto-input').click();
+        }
     }
     document.querySelector('#btn-cargar-foto').addEventListener("click", clickInput);
 
