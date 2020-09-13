@@ -195,6 +195,13 @@ function loadPage() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
+        let version = {
+            "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+            "filtro":document.getElementById("filtros-select").value,
+            "widht": canvas.widht,
+            "height": canvas.height
+            };
+        versiones.push(version);
     }
 
     function filtroSepia() {
