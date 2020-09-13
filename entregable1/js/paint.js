@@ -25,8 +25,19 @@ function loadPage() {
         if (versiones.length !=1) {
             document.getElementById("select-saturado").classList.add("d-none");
             document.getElementById("select-brillo").classList.add("d-none");
+            document.getElementById("select-blur").classList.add("d-none");
             versiones.pop();
-            document.getElementById("filtros-select").value = versiones[versiones.length-1].filtro;
+            filtro= versiones[versiones.length-1].filtro;
+            document.getElementById("filtros-select").value = filtro;
+            if (filtro == "blur") {
+                document.getElementById("select-blur").classList.remove("d-none");
+            }else if(filtro== "brillo"){
+                document.getElementById("select-brillo").classList.remove("d-none");
+
+            }else if(filtro== "saturado"){
+                document.getElementById("select-saturado").classList.remove("d-none");
+            }
+
             let imgData= versiones[versiones.length-1].pixeles;
 
             ctx.putImageData(imgData, 0, 0);
@@ -141,8 +152,10 @@ function loadPage() {
                 }
             }
 
+            document.getElementById("foto-input").value = "";
         }
         document.getElementById("filtros-select").value = "default";
+
 
     }
     document.getElementById("foto-input").addEventListener("change", cargarFoto);
@@ -160,6 +173,13 @@ function loadPage() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
+        let version = {
+            "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+            "filtro":document.getElementById("filtros-select").value,
+            "widht": canvas.widht,
+            "height": canvas.height
+            };
+        versiones.push(version);
     }
 
     function filtroGrises() {
@@ -192,7 +212,15 @@ function loadPage() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
+        let version = {
+            "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+            "filtro":document.getElementById("filtros-select").value,
+            "widht": canvas.widht,
+            "height": canvas.height
+            };
+        versiones.push(version);
     }
+    
 
     function filtroBrillo() {
 
@@ -211,13 +239,20 @@ function loadPage() {
                     }
                 }
                 ctx.putImageData(imageData, 0, 0);
+                let version = {
+                    "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+                    "filtro":document.getElementById("filtros-select").value,
+                    "widht": canvas.widht,
+                    "height": canvas.height
+                    };
+                versiones.push(version);
             }
     }
     document.getElementById("cant-brillo").addEventListener("change", filtroBrillo);
 
     function filtroBinario() {
 
-        let imageData = ctx.getImageData(0, 0, wyh[0], wyh[1]);
+        let imageData = ctx.getImageData(0, 0, versiones[0].widht, versiones[0].height);
         for (let y = 0; y < imageData.height; y++) {
             for (let x = 0; x < imageData.width; x++) {
                 let index = (x + imageData.width * y) * 4;
@@ -235,15 +270,21 @@ function loadPage() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
-
+        let version = {
+            "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+            "filtro":document.getElementById("filtros-select").value,
+            "widht": canvas.widht,
+            "height": canvas.height
+            };
+        versiones.push(version);
 
     }
 
     function filtroSaturado() {
     
-            let saturado = document.getElementById("cant-saturado").value;
-            document.getElementById("select-saturado").classList.remove("d-none");
-            
+        document.getElementById("select-saturado").classList.remove("d-none");
+        let saturado = document.getElementById("cant-saturado").value;
+
             if (saturado>1) {
                 let imageData = ctx.getImageData(0, 0, versiones[0].widht, versiones[0].height);
                 for (let y = 0; y < imageData.height; y++) {
@@ -259,7 +300,13 @@ function loadPage() {
                     }
                 }
                 ctx.putImageData(imageData, 0, 0);
-                
+                let version = {
+                    "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+                    "filtro":document.getElementById("filtros-select").value,
+                    "widht": canvas.widht,
+                    "height": canvas.height
+                    };
+                versiones.push(version);
             }
     }
     document.getElementById("cant-saturado").addEventListener("change", filtroSaturado);
@@ -330,6 +377,13 @@ function loadPage() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
+        let version = {
+            "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
+            "filtro":document.getElementById("filtros-select").value,
+            "widht": canvas.widht,
+            "height": canvas.height
+            };
+        versiones.push(version);
     }
     document.getElementById("cant-blur").addEventListener("change", filtroBlur);
 
@@ -441,20 +495,21 @@ function loadPage() {
             } else if (filtro == "grises") {
                 filtroGrises();
             } else if (filtro == "brillo") {
+                let min= document.getElementById("cant-brillo").min;
+                document.getElementById("cant-brillo").value= min;
                 filtroBrillo();
             } else if (filtro == "saturado") {
+                let min= document.getElementById("cant-saturado").min;
+                document.getElementById("cant-saturado").value= min;
                 filtroSaturado();
+
             }else if (filtro == "blur") {
+                let min= document.getElementById("cant-blur").min;
+                document.getElementById("cant-blur").value= min;
                 filtroBlur();
             }
           
-            let version = {
-                "pixeles":ctx.getImageData(0, 0, canvas.width , canvas.height ),
-                "filtro":document.getElementById("filtros-select").value,
-                "widht": canvas.widht,
-                "height": canvas.height
-                };
-            versiones.push(version);
+           
     }
     document.getElementById("filtros-select").addEventListener("change", filtros);
 
@@ -480,6 +535,13 @@ function loadPage() {
         
     }
     document.getElementById("guardar").addEventListener("click", guardarFoto);
+
+    function closeAlert() {
+
+        document.getElementById("alert").classList.add("d-none");
+    }
+    document.getElementById("close-alert").addEventListener("click", closeAlert);
+
 
 }
 document.addEventListener("DOMContentLoaded", loadPage);
