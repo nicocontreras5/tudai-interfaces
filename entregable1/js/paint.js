@@ -549,6 +549,8 @@ function loadPage() {
     }
     document.getElementById("close-alert").addEventListener("click", closeAlert);
 
+    
+
 
 }
 document.addEventListener("DOMContentLoaded", loadPage);
