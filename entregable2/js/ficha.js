@@ -1,44 +1,46 @@
 class Ficha {
 
-    constructor(color, ctx, value) {
+    constructor(color, ctx, posX, posY) {
+        this.posX = posX;
+        this.posY = posY;
+        this.radio = 20;
         this.color = color;
         this.imagenFicha = new Image();
-        this.imagenFicha.src = "./css/imagenes/ficha-" + color + ".jpeg";
+        this.imagenFicha.src = "./css/imagenes/ficha-" + color + ".png";
+        this.imagenFicha.height = 40;
+        this.imagenFicha.width = 40;
         this.ctx = ctx;
-        this.value= value;
+
 
     }
 
-
-    
-    getValue() {
-        return this.value;
+    getPosX(){
+        return this.posX;
     }
 
+    getPosY(){
+        return this.posY;
+    }
+
+    getImgFicha(){
+        return this.imagenFicha.src;
+    }
 
     getcolor() {
         return this.color;
     }
 
-    dibujarEnTablero(x,y){
-     
-        this.ctx.drawImage(this.imagenFicha, x+11, y+11,40,35);
+    dibujarFicha(x, y) {
+       
+        this.ctx.drawImage(this.imagenFicha, x, y, this.imagenFicha.width, this.imagenFicha.height);
     
     }
 
-    crearFichasJugador(xmin, xmax, ymin, ymax) {
-        let x;
-        let y;
-        this.imagenFicha.onload = () => {
-            for (let i = 0; i < 15; i++) {
-                x = Math.floor(Math.random() * (xmax - xmin + 1)) + xmin;
-                y = Math.floor(Math.random() * (ymax - ymin + 1)) + ymin;
-                this.ctx.drawImage(this.imagenFicha, x, y,45,35);
-            }
-        }
+    meClikeo(x, y) {
+        let _x = this.posX +this.radio - x;
+        let _y = this.posY+this.radio - y;
+        
+        return Math.sqrt(_x * _x + _y * _y) < this.radio;
     }
-
-
-
 
 }
