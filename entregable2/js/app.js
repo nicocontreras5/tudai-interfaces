@@ -24,6 +24,7 @@ class app {
         this.tablero = new Tablero(this.ctx, this.col, this.fil);
         this.tablero.drawTablero();
         this.crearMatLogica();
+        this.actualizarImgPartida();
 
 
 
