@@ -48,7 +48,7 @@ function onloand() {
 
     function mouseDown(e) {
 
-        partida.actualizarImgPartida();
+        
         if ((partida.JugadorAgarroFichas(e.offsetX, e.offsetY)) && (!partida.checkGanador()) && (!partida.checkEmpate())) {
 
             partida.setAccionJugadorActual(true);

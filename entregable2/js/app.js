@@ -56,6 +56,7 @@ class app {
         let columnaTirada = Math.floor(num);
         this.jugadorActual.setjugando(false);
         if (this.insertarFicha(columnaTirada,posFicha)) {
+            this.actualizarImgPartida();
              // desaparecer fichas ya tiradas
             
             if (!this.checkGanador() && (!this.checkEmpate())) {
