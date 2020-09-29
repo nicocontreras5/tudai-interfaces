@@ -11,13 +11,14 @@ class app {
         this.fil = fil;
         this.imgPartida;
 
+
     }
 
 
     crearPartida() {
         //cantidad de fichas cuando cree el jugador y ctx
         this.jugador2 = new Jugador(false, "amarilla", 1, 700, 850);
-        this.jugadorActual = new Jugador(false, "roja", 2, 10, 180);
+        this.jugadorActual = new Jugador(false, "roja", 2, 10, 160);
         this.jugadorActual.crearMisFichas(this.fil * this.col / 2, this.ctx);
         this.jugador2.crearMisFichas(this.fil * this.col / 2, this.ctx);
         this.tablero = new Tablero(this.ctx, this.col, this.fil);
@@ -47,15 +48,16 @@ class app {
         }
     }
 
-    getImgPartida() {
-        return this.imgPartida;
-    }
+   // axomodar el hardcode de 65
     // ejecuta cuando se suelta el click 
-    tirarFicha(x, y) {
+    jugar(x, y) {
+        let posFicha = this.jugadorActual.getFichaActual();
         let num = (x - this.tablero.getDifPixelX()) / 65;
         let columnaTirada = Math.floor(num);
         this.jugadorActual.setjugando(false);
-        if (this.insertarFicha(columnaTirada, x, y)) {
+        if (this.insertarFicha(columnaTirada,posFicha)) {
+             // desaparecer fichas ya tiradas
+            
             if (!this.checkGanador() && (!this.checkEmpate())) {
                 this.alternarTurnos();
             }
@@ -72,20 +74,18 @@ class app {
     actualizarImgPartida() {
         this.imgPartida = this.ctx.getImageData(0, 0, 900, 600);
     }
-
-    insertarFicha(columna, x, y) {
+    
+    insertarFicha(columna,posFicha) {
 
 
         for (let i = this.fil - 1; i >= 0; i--) {
 
             if (this.matLogica[i][columna] == 0) {
                 this.matLogica[i][columna] = this.jugadorActual.getValueJugador();
-                x = this.tablero.getDifPixelX() + columna * this.tablero.imagenCelda.width;
-                y = this.tablero.getDifPixely() + i * this.tablero.imagenCelda.height;
-                this.jugadorActual.insertarFicha(x, y);
-                // desaparecer fichas ya tiradas
-                //this.ctx.clearRect(this.jugadorActual.getxMin(), this.jugadorActual.getyMin(), this.jugadorActual.getxMax(), this.jugadorActual.getyMax());
-                //this.jugadorActual.dibujarMontonFicha();
+                let x = this.tablero.getDifPixelX() + columna * this.tablero.imagenCelda.width;
+                let y = this.tablero.getDifPixely() + i * this.tablero.imagenCelda.height;
+                this.jugadorActual.insertarFicha(x, y,this.ctx,posFicha);
+               
                 return true;
             }
         }
@@ -151,7 +151,14 @@ class app {
     // consulta en el main  cuando se hace click en un monton de fichas si da true
     // le cambio setAccionJugador a true para decir q esta jugando
     JugadorAgarroFichas(x, y) {
-        return this.jugadorActual.agarreFicha(x, y);
+        let posFichaActual = this.jugadorActual.agarreFicha(x, y);
+        if ( posFichaActual== -1) {
+            return false;
+        } else {
+            this.jugadorActual.setFichaActual(posFichaActual);
+            return true;
+        }
+       
 
     }
 

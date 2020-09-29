@@ -9,9 +9,15 @@ class Jugador {
         this.yMax = 510;
         this.value = value;
         this.fichas = [];
-
+        this.fichaActual = -1;
+        
 
     }
+
+    getFichaActual(){
+        return this.fichaActual;
+    }
+
     getCantFichas() {
         return this.fichas.length;
 
@@ -49,12 +55,11 @@ class Jugador {
     setjugando(juega) {
         this.jugando = juega;
     }
-    // setear a cada ficha una posicion
     crearMisFichas(cantidad, ctx) {
 
         for (let i = 0; i < cantidad; i++) {
-            let x = Math.floor(Math.random() * (this.xMax - this.xMin + 1)) + this.xMin;
-            let y = Math.floor(Math.random() * (this.yMax - this.yMin + 1)) + this.yMin;
+            let x = Math.floor(Math.random() * ((this.xMax- 40 )- this.xMin + 1)) + this.xMin;
+            let y = Math.floor(Math.random() * (this.yMax- 40 - this.yMin + 1)) + this.yMin;
             let ficha = new Ficha(this.color, ctx,x, y);
             this.fichas.push(ficha);
         }
@@ -62,12 +67,15 @@ class Jugador {
     }
 
     dibujarMontonFicha() {
-        let imgFicha = new Image();
-         imgFicha.src = this.fichas[0].getImgFicha(); 
-        imgFicha.onload = () => {
-            for (let i = 0; i < this.fichas.length; i++) {
-                this.fichas[i].dibujarFicha(this.fichas[i].getPosX(), this.fichas[i].getPosY());
+        if (this.getCantFichas()){
 
+            let imgFicha = new Image();
+             imgFicha.src = this.fichas[0].getImgFicha(); 
+            imgFicha.onload = () => {
+                for (let i = 0; i < this.fichas.length; i++) {
+                    this.fichas[i].dibujarFicha(this.fichas[i].getPosX(), this.fichas[i].getPosY());
+    
+                }
             }
         }
     }
@@ -76,22 +84,32 @@ class Jugador {
         return this.valueJugador;
     }
 
-    //arreglar desfazado
-    agarreFicha(x, y) {
-        for (let i = this.fichas.length-1; i >= 0; i--) {
-            if (this.fichas[i].meClikeo(x,y)){
-                return true;
-            }
-        }
-        return false;
+    setFichaActual(i){
+        this.fichaActual = i;
     }
 
-    insertarFicha(x, y) {
-        //la suma de 11 centra en la celda la ficha
+    agarreFicha(x, y) {
+       
+        for (let i = this.fichas.length-1; i >= 0; i--) {
+            if (this.fichas[i].meClikeo(x,y)){
+             
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    //borrar la ficha q agarro
+    insertarFicha(x, y, ctx, posFicha) {
         x = x + 11;
         y = y + 7;
-        this.fichas[this.fichas.length -1].dibujarFicha(x, y);
-        this.fichas.pop();
+        
+        this.fichas[posFicha].dibujarFicha(x, y);
+        this.fichas.splice(posFicha, 1);
+        this.fichaActual = -1;
+        ctx.clearRect(this.xMin, this.yMin, this.xMax, this.yMax);
+
+        this.dibujarMontonFicha();
 
     }
 
