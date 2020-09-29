@@ -33,7 +33,9 @@ class Tablero {
 
             }
             this.imgPartida= this.ctx.getImageData(0, 0, 900, 600);
+           
         }
+
     }
 
     getDifPixelX(){
