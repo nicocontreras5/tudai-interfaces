@@ -79,14 +79,14 @@ function onloand() {
             if (partida.checkGanador()) {
 
                 divAviso.innerHTML = "GANO EL JUGADOR :";
-                imgJugadorActual.src = "/css/imagenes/ficha-" + partida.jugadorActual.getColor() + ".png";
+                imgJugadorActual.src = "../css/imagenes/ficha-" + partida.jugadorActual.getColor() + ".png";
             } else if (partida.checkEmpate()) {
                 divAviso.innerHTML = "Empate";
                 imgJugadorActual.classList.add("d-none");
 
             } else {
 
-                imgJugadorActual.src = "/css/imagenes/ficha-" + partida.jugadorActual.getColor() + ".png";
+                imgJugadorActual.src = "../css/imagenes/ficha-" + partida.jugadorActual.getColor() + ".png";
             }
         } else {
             partida.setAccionJugadorActual(false);
