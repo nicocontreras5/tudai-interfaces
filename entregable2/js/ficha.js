@@ -6,7 +6,7 @@ class Ficha {
         this.radio = 20;
         this.color = color;
         this.imagenFicha = new Image();
-        this.imagenFicha.src = "./css/imagenes/ficha-" + color + ".png";
+        this.imagenFicha.src = "css/imagenes/ficha-" + color + ".png";
         this.imagenFicha.height = 40;
         this.imagenFicha.width = 40;
         this.ctx = ctx;
