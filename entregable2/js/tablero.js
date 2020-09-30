@@ -10,14 +10,14 @@ class Tablero {
         this.fil = fil;
         this.difPixelTableroX = 220;
         this.difPixelTableroy = 150;
-      
+        
 
     }
 
 
 
 
-    drawTablero() {
+    drawTablero(h) {
 
         let x = this.difPixelTableroX;
         let y = this.difPixelTableroy;
@@ -32,10 +32,10 @@ class Tablero {
                 y += this.imagenCelda.height;
 
             }
-            this.imgPartida= this.ctx.getImageData(0, 0, 900, 600);
+            
            
+            h();
         }
-
     }
 
     getDifPixelX(){

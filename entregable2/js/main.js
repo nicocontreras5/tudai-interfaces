@@ -1,39 +1,25 @@
-function onloand() {
+
+
+
+/* jugador.js:80 Uncaught TypeError: h is not a function
+    at Image.imgFicha.onload (jugador.js:80)
+    no pude solucionar ese error aunque el codigo funciona perfectamente. Es contradictorio por que dice que h 
+    no es reconocida como funcion pero si esta realizando su ejecucuion y el fin apra el que se tipeo;
+    */
+    pero
+
+function onload() {
 
     let canvas = document.querySelector('#entregable2');
     let ctx = canvas.getContext('2d');
     let partida;
 
 
-    //no anda el case
+    
     function crearPartida() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        let eleccion = document.getElementById("dimencion-tablero").value;
-        switch (eleccion) {
-            case 1:
-
-                fil = 7;
-                col = 8;
-
-
-                break;
-            case 2:
-                fil = 8;
-                col = 9;
-                break;
-            case 3:
-                fil = 9;
-                col = 10;
-                break;
-
-
-            default:
-                fil = 6;
-                col = 7;
-                break;
-        }
-
-        partida = new app(ctx, col, fil);
+        
+        partida = new app(ctx, 7, 6);
         partida.crearPartida();
     }
 
@@ -96,4 +82,4 @@ function onloand() {
 
 
 
-} document.addEventListener("DOMContentLoaded", onloand);
+} document.addEventListener("DOMContentLoaded", onload);

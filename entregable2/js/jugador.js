@@ -66,7 +66,7 @@ class Jugador {
         this.dibujarMontonFicha();
     }
 
-    dibujarMontonFicha() {
+    dibujarMontonFicha(h) {
         if (this.getCantFichas()){
 
             let imgFicha = new Image();
@@ -76,6 +76,8 @@ class Jugador {
                     this.fichas[i].dibujarFicha(this.fichas[i].getPosX(), this.fichas[i].getPosY());
     
                 }
+                
+                h();
             }
         }
     }
@@ -100,7 +102,7 @@ class Jugador {
     }
 
     //borrar la ficha q agarro
-    insertarFicha(x, y, ctx, posFicha) {
+    insertarFicha(x, y, ctx, posFicha,h) {
         x = x + 11;
         y = y + 7;
         
@@ -109,14 +111,16 @@ class Jugador {
         this.fichaActual = -1;
         ctx.clearRect(this.xMin, this.yMin, this.xMax, this.yMax);
 
-        this.dibujarMontonFicha();
-
+        this.dibujarMontonFicha(h);
+        
     }
 
     dragFicha(x,y){
         x = x-20;
         y = y-20;
         this.fichas[0].dibujarFicha(x,y);
+        
+        
     }
 
 }

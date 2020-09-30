@@ -22,9 +22,9 @@ class app {
         this.jugadorActual.crearMisFichas(this.fil * this.col / 2, this.ctx);
         this.jugador2.crearMisFichas(this.fil * this.col / 2, this.ctx);
         this.tablero = new Tablero(this.ctx, this.col, this.fil);
-        this.tablero.drawTablero();
+        this.tablero.drawTablero(this.actualizarImgPartida.bind(this));
         this.crearMatLogica();
-
+        this.actualizarImgPartida();
     }
 
     setAccionJugadorActual(accion) {
@@ -53,8 +53,8 @@ class app {
         let num = (x - this.tablero.getDifPixelX()) / 65;
         let columnaTirada = Math.floor(num);
         this.jugadorActual.setjugando(false);
-        if (this.insertarFicha(columnaTirada,posFicha)) {
-            this.actualizarImgPartida();
+        if (this.insertarFicha(columnaTirada,posFicha, this.actualizarImgPartida.bind(this))) {
+            
              // desaparecer fichas ya tiradas
             
             if (!this.checkGanador() && (!this.checkEmpate())) {
@@ -70,11 +70,14 @@ class app {
         this.jugador2 = aux;
     }
 
+    
+
     actualizarImgPartida() {
+        console.log("ejecturo");
         this.imgPartida = this.ctx.getImageData(0, 0, 900, 600);
     }
     
-    insertarFicha(columna,posFicha) {
+    insertarFicha(columna,posFicha, h) {
 
 
         for (let i = this.fil - 1; i >= 0; i--) {
@@ -83,8 +86,12 @@ class app {
                 this.matLogica[i][columna] = this.jugadorActual.getValueJugador();
                 let x = this.tablero.getDifPixelX() + columna * this.tablero.imagenCelda.width;
                 let y = this.tablero.getDifPixely() + i * this.tablero.imagenCelda.height;
-                this.jugadorActual.insertarFicha(x, y,this.ctx,posFicha);
-               
+                
+                this.jugadorActual.insertarFicha(x, y,this.ctx,posFicha,h)
+                   
+              
+                
+                
                 return true;
             }
         }
@@ -155,7 +162,7 @@ class app {
             return false;
         } else {
             this.jugadorActual.setFichaActual(posFichaActual);
-            this.actualizarImgPartida();
+            
             return true;
         }
        
