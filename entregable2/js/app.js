@@ -73,7 +73,7 @@ class app {
     
 
     actualizarImgPartida() {
-        console.log("ejecturo");
+      
         this.imgPartida = this.ctx.getImageData(0, 0, 900, 600);
     }
     

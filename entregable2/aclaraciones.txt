@@ -1,6 +1,9 @@
 jugador.js:80 Uncaught TypeError: h is not a function
     at Image.imgFicha.onload (jugador.js:80)
 
+h es una funcion que paso por parametro apra que se ejecute luego de que el jugador
+termine de dibujar sus fichas para q actualice la img de la partida
+para dragear;
 no pude solucionar ese error aunque el codigo funciona perfectamente. Es contradictorio por que dice que h 
 no es reconocida como funcion pero si esta realizando su ejecucuion y el fin apra el que se tipeo.
 decidi dejar la funcion por ams que reconozca ese "error" ya que cumple su objetivo. PREGUNTAr! 
