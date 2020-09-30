@@ -1,13 +1,5 @@
 
 
-
-/* jugador.js:80 Uncaught TypeError: h is not a function
-    at Image.imgFicha.onload (jugador.js:80)
-    no pude solucionar ese error aunque el codigo funciona perfectamente. Es contradictorio por que dice que h 
-    no es reconocida como funcion pero si esta realizando su ejecucuion y el fin apra el que se tipeo;
-    */
-    pero
-
 function onload() {
 
     let canvas = document.querySelector('#entregable2');
