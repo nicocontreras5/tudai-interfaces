@@ -4,38 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hombre Araña</title>
-    <link rel="stylesheet" href="css/aspectos.css">
-    <script type="text/javascript" src="js/loader.js"></script>
-
+    <title>Fast and Furious</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/contacto.css">
+    <link rel="shortcut icon" type="image/x-icon" href="imagaenes/logo.png" />
+    <script type="text/javascript" src="js/dropdown.js"></script> 
+    <script type="text/javascript" src="js/loader.js"></script> 
 </head>
 
 <body>
     <div class="loader">
-
-   
-        <h1>Loading..</h1>
-       </div>
-    <div class="capa lluvia d-none">
-    <div class="topnav entrada" id="myTopnav">
-        <a href="index.html">Home</a>
-        <a href="calendario.html">Calendario</a>
-        <a href="contacto.html">Contacto</a>
-        <div class="dropdown">
-            <button class="dropbtn"> <span>	&#x2630;</span></button>
-            <div class="dropdown-content">
-                <a href="">El Hombre Araña 1</a>
-                <a href="#">El Hombre Araña 2</a>
-                <a href="#">El Hombre Araña 3</a>
-                <a href="#">El Hombre Araña 4</a>
-                <a href="#">El Hombre Araña 5</a>
-            </div>
-        </div>
+        <img  id="img-loader"  src="/imagaenes/laoder/loader.png" alt="llanta">
+      </div>
+    
+      <div class="nav d-none">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="dropdown"><a href="#"><span> &#x2630;</span></a></li>
+        </ul>
+        <h1 class="titulo">Fast and Fourious 9</h1>
     </div>
-        <div>
-            <form>
-                <h2>Dejanos tu comentario o saludo ..</h2>
+    <div class="dropdown-content d-none" id="hamburguer">
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/watch?v=EqzJdMlQULQ&ab_channel=Obiiss" target="_blank">Tráiler</a>
+            </li>
+            <li>
+                <a href="https://es.wikipedia.org/wiki/F9_(pel%C3%ADcula)" target="_blank">+info</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/results?search_query=triler+fast+and+furius+8" target="_blank">fast and furious 8</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=Skpu5HaVkOc" target="_blank">fast and furious 7</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=dKi5XoeTN0k" target="_blank">fast and furious 6</a>
+            </li>
+        </ul>
+    </div>
+    <div class="container d-none">
+        
 
+        <div>
+            <h2>Dejanos tu comentario o saludo ..</h2>
+            <form>
+    
                 <label>Nombre:</label>
                 <input type="text" required>
                 <label>Email:</label><br>
@@ -43,8 +59,9 @@
                 <label>Comentario/ Saludo:</label><br>
                 <textarea rows="4" cols="50" required></textarea>
                 <button type="submit"> Enviar</button>
-
+    
             </form>
+
         </div>
     </div>
 

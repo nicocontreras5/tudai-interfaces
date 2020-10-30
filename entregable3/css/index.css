@@ -1,0 +1,204 @@
+
+/* PARALLAX */
+
+.parallax{
+  height: 90%;
+  background-color: rgb(134, 131, 131);
+
+}
+
+/* ESTRENO */
+#estreno{
+}
+#estreno-js {
+  background-color: #333;
+  color: rgb(255, 25, 25);
+  margin: 3% 30%;
+  padding: 1%;
+  text-align: center;
+ 
+
+  }
+
+/* ESCENAS */
+
+@keyframes entradaEscenas {
+  from {opacity: 0;
+    filter: blur(50px);}
+  to {opacity: 1;
+    filter: blur(0px);
+   
+  }
+}
+
+.entrada-escenas{
+  animation: entradaEscenas 1.5s;
+}
+
+
+.mySlides {
+  display: none;
+}
+
+
+.slideshow-container {
+  max-width: 40%;
+
+  position: relative;
+  margin: auto;
+  
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.prev{
+  left: 0;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+
+.escenas{
+  text-align: center;
+ 
+  margin: auto;
+  margin-bottom: 3%;
+}
+
+/* CARDS */
+
+@keyframes entrada-cards {
+  from {margin-left: -200%;
+  } 
+  to {margin-left: 0;
+  }
+}
+
+
+.entrada-cards{
+  animation: entrada-cards 1.5s;
+}
+
+.cards{
+  
+ text-align: center;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 260px;
+  height: 400px;
+  perspective: 1000px;
+  margin: 1%;
+  display: inline-block;
+}
+
+.flip-card-inner {
+ 
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition:  0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card-inner img{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  width: 100%;
+  height: 80%;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+  
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  border-radius: 10px;
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back h2 {
+  background-color:  #333;
+  padding: 4%;
+}
+
+
+.flip-card-back {
+  border-radius: 10px;
+  padding: 4%;
+  background-color: #b93329;
+  color: white;
+  transform: rotateY(180deg);
+}
+

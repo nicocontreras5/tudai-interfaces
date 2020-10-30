@@ -4,76 +4,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hombre Araña</title>
-    <link rel="stylesheet" href="css/aspectos.css">
+    <title>Fast and Furious</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/calendario.css">
+    <script type="text/javascript" src="js/dropdown.js"></script> 
+    <script type="text/javascript" src="js/calendario.js"></script>
     <script type="text/javascript" src="js/loader.js"></script>
-    
-    <script type="text/javascript" src="js/acordeon.js"></script>
-
 </head>
 
 <body>
     <div class="loader">
-
-
-        <h1>Loading..</h1>
+        <img id="img-loader" src="/imagaenes/laoder/loader.png" alt="llanta">
     </div>
-    <div class="capa lluvia d-none">
-        <div class="topnav entrada" id="myTopnav">
-            <a href="index.html">Inicio</a>
-            <a href="calendario.html">Calendario</a>
-            <a href="contacto.html">Contacto</a>
-            <div class="dropdown">
-              <button class="dropbtn"><span> &#x2630;</span></button>
-              <div class="dropdown-content">
-                <a href="#">El Hombre Araña 1</a>
-                <a href="#">El Hombre Araña 2</a>
-                <a href="#">El Hombre Araña 3</a>
-                <a href="#">El Hombre Araña 4</a>
-                <a href="#">El Hombre Araña 5</a>
-              </div>
-            </div>
-          </div>
+
+
+    <div class="nav d-none">
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+            <li id="dropdown"><a href="#"><span> &#x2630;</span></a></li>
+        </ul>
+        <h1 class="titulo">Fast and Fourious 9</h1>
+    </div>
+    <div class="dropdown-content d-none" id="hamburguer">
+        <ul>
+            <li>
+                <a href="https://www.youtube.com/watch?v=EqzJdMlQULQ&ab_channel=Obiiss" target="_blank">Tráiler</a>
+            </li>
+            <li>
+                <a href="https://es.wikipedia.org/wiki/F9_(pel%C3%ADcula)" target="_blank">+info</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/results?search_query=triler+fast+and+furius+8" target="_blank">fast and furious 8</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=Skpu5HaVkOc" target="_blank">fast and furious 7</a>
+            </li>
+            <li>
+                <a href="https://www.youtube.com/watch?v=dKi5XoeTN0k" target="_blank">fast and furious 6</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="container d-none">
 
         <div class="acordeon-eventos">
             <h1>Eventos</h1>
-            <button class="accordion">Estreno</button>
+            <button class="accordion">Estreno postergado!!.</button>
             <div class="panel">
-                <img  class="anime-img-acordeon" src="imagaenes/background.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat.</p>
+                <img src="imagaenes/eventos/estrenopostergado.jpg" alt="">
+                <p>"Es especialmente difícil informarles que tenemos que cambiar la fecha de estreno de la película.
+                    No será posible que nuestros fanáticos de todo el mundo vean la película este mes de mayo.
+                    Hemos cambiado la fecha de lanzamiento global a abril de 2021, Norte América estrenará el 2 de
+                    abril",
+                    expresaba el comunicado debido a la pandemia por el COVID-19.
+                    Fast & Furious 9 será la penúltima entrega de la saga original protagonizada por Vin Diesel,
+                    Michelle Rodriguez y Jordana Brewster.</p>
             </div>
 
-            <button class="accordion">Entrevista</button>
+            <button class="accordion">La saga tendra 2 entregas mas para culminar.</button>
             <div class="panel">
-                <img src="imagaenes/Spider-Man-3.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat.</p>
+                <img src="imagaenes/eventos/dieseljustinlin.jpg" alt="">
+                <p>a saga principal de Fast and Furious llega a su fin. Vin Diesel ya había adelantado anteriormente la
+                    posibilidad de terminar la franquicia con una décima película. Sin embargo, en lugar de ser una
+                    única cinta final, Universal Pictures ha confirmado que la saga tendrá un desenlace de dos partes,
+                    ambas dirigidas por Justin Lin.
+
+                    Según informa Deadline, habrá dos películas de la taquillera saga más después de Fast & Furious 9,
+                    que llegará a los cines el año que viene tras sufrir varios retrasos por la pandemia de coronavirus.
+                </p>
             </div>
 
-            <button class="accordion">Comentarios Fans</button>
+            <button class="accordion">Entrevista a Vin Diesel (Dominic Toretto) - 2019.</button>
             <div class="panel">
-                <img src="imagaenes/estreno.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat.</p>
+                <img src="imagaenes/eventos/entrevistaDominic.jpg" alt="">
+                <p>Vin Diesel hizo el anuncio en las redes sociales. "Sentimos todo el amor y la anticipación que tienes
+                    por el próximo capítulo de nuestra saga", escribió. “Por eso es especialmente difícil hacerle saber
+                    que tenemos que cambiar la fecha de estreno de la película. Ha quedado claro que no será posible que
+                    todos nuestros fans de todo el mundo vean la película este mes de mayo".
+
+                    "Si bien sabemos que es una decepción tener que esperar un poco más, este movimiento se realiza con
+                    la seguridad de todos como nuestra principal consideración" agrego.</p>
             </div>
-            <button class="accordion">Noticias</button>
+            <button class="accordion">Entrevista a John Cena (Jakob Toretto) - Principios de 2019.</button>
             <div class="panel">
-                <img src="imagaenes/spidey-1.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                    et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                    aliquip
-                    ex ea commodo consequat.</p>
+                <img src="imagaenes/eventos/entrevistaJhon.jpg" alt="">
+                <p>“Amigo, ese [Fast & Furious 9] fue increíble en muchos aspectos porque se trata de una franquicia,
+                    como una franquicia heredada. El elenco de esa película ha estado trabajando en conjunto durante 20
+                    años. Es un entorno familiar y es uno que el mundo ve como su familia también. Están en la historia,
+                    están en los personajes y están en esta narrativa de 20 años y ocho entregas que, en muchos casos,
+                    [es definitoria]. Esto es mucho de lo que es conocido en el entretenimiento y lo que la gente
+                    espera" Decia john que en este caso sera el hermano de Dominic Toretto..</p>
             </div>
         </div>
     </div>

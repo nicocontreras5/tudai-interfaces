@@ -1,0 +1,98 @@
+
+h1{
+  font-size: 30px;
+}
+
+/* CONTAINER */
+.container{
+    padding: 2%;
+    text-align: center;
+    background-image: url("../imagaenes/bg.jpg");
+    background-size: contain;
+    height: 82.5%;
+    
+}
+
+.container div {
+  animation: form 1.5s;
+  text-align: center;
+  width: 40%;
+  margin: auto;
+  background-color: rgba(78, 78, 78, 0.637);
+}
+
+/* CONTACTO FORM */
+
+form{
+    animation: entradaForm 2s ;
+    padding: 2%;
+    position: relative;
+  
+    text-align: center;
+    margin: 1% auto;
+    width: 40%;
+    
+    border-radius: 15px;
+  }
+  form label{
+    margin: 2% 0 2% 0;
+    color:rgb(255, 251, 251);
+    display: block;
+    font-size: 140%;
+   
+    
+  }
+  
+  form button{
+    display: block;
+    margin: auto;
+    margin-top: 4%;
+    padding: 2%;
+    border-radius: 15px;
+    outline: none;
+    font-size: 130%;
+    transition: 2s;
+    width: 50%;
+  }
+  
+  
+  form input, form textarea{
+    color: rgb(0, 0, 0);
+    padding: 0.5%;
+    width: 100%;
+   font-size: 200%;
+   
+  }
+  
+  form input:focus, form textarea:focus{
+    transform: rotateX(360deg);
+    transition: 1s;
+    border-radius: 15px;
+    border-color: white;
+    border-style: solid;
+    outline: none;
+    background-color: rgba(224, 28, 28, 0.774);
+  }
+  
+  
+  
+  
+  
+  form button:active{
+    
+    background-color: rgba(255, 0, 0, 0.986);
+    width: 100%;
+    transition: -1s;
+    border-color: white;
+    border-style: solid;
+    outline: none;
+    color: white;
+    font-size: 150%;
+    
+  }
+  
+@keyframes form {
+  0% {margin-left: 100%; }
+  100% {margin-left: 30%; }
+}
+
