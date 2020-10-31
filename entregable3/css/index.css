@@ -1,8 +1,10 @@
+
+
 h1{
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 0;
-  width: 46%;
+  width: 66%;
   background-color:rgb(24, 23, 23);
 }
 /* PARALLAX */
@@ -16,11 +18,8 @@ h1{
 }
 
 #smoke{
-  min-width: 100%;
-  min-height: 92%;
-  right: 0;
-  top: 15.1%;
-  position: absolute;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-image: url("../imagaenes/parallax/niebla.png");  
   animation: smoke 40s infinite linear; 
@@ -35,9 +34,14 @@ h1{
 }
 
 #estreno{
-  width: 100%;
+  position: relative;
+   max-width: 100%;
+  
   padding: 0  0 1% 0;
   background-color: rgb(24, 23, 23);
+  overflow: hidden;
+ 
+ 
 }
 
 
@@ -50,6 +54,16 @@ h1{
   text-align: center;
   background-color: rgb(24, 23, 23);
 
+  }
+
+  .car{
+    position: absolute;
+    top: 43%;
+    width: 25%;
+    right: -560px;
+    margin-left: 1%;
+    overflow: hidden;
+    
   }
 
 /* ESCENAS */
@@ -67,16 +81,23 @@ h1{
   animation: entradaEscenas 1.5s;
 }
 
+.mySlides img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .mySlides {
   display: none;
+  height: 500px;
+
+  
 }
 
 
 .slideshow-container {
-  max-width: 50%;
- 
-
+  max-width: 70%;
+  
   position: relative;
   margin: auto;
   
@@ -114,20 +135,25 @@ h1{
 
 .text {
   color: #f2f2f2;
-  font-size: 15px;
-  padding: 8px 12px;
+  background-color:  rgb(24, 23, 23);
+  font-size: 90%;
+  padding: 8px 0;
   position: absolute;
-  bottom: 8px;
   width: 100%;
+  margin-top: -1%;
   text-align: center;
+  bottom: 0;
+  
 }
 
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
+  font-size: 100%;
   padding: 8px 12px;
   position: absolute;
-  top: 0;
+  top: 93.5%;
+  z-index: 7;
+  right: 0;
 }
 
 
@@ -152,6 +178,7 @@ h1{
   padding: 1% 0;
   margin: 4% auto;
   margin-bottom: 3%;
+  
 }
 
 /* CARDS */
@@ -165,14 +192,16 @@ h1{
 
 
 .entrada-cards{
-  animation: entrada-cards 1s;
+  animation: entrada-cards 1.5s;
 }
 
 .cards{
   width: 100%;
   background-color: rgb(24, 23, 23);
  text-align: center;
- padding-bottom: 5%;
+ padding-bottom: 4%;
+
+ 
 }
 
 .flip-card {
@@ -237,7 +266,7 @@ h1{
   transform: rotateY(180deg);
 }
 
-
+/* 
 @media only screen and (min-height: 600px ){
   #smoke{
     top: 9.4%;
@@ -253,4 +282,4 @@ h1{
   #smoke{
     top: 18.5%;
   }
-}
+} */
