@@ -8,10 +8,10 @@ body{
   
   h1{
     color: aliceblue;
-    font-size: 40px;
+    font-size: 25px;
     text-decoration: dashed;
-    background-color: #333;
-    padding: 1%;
+   
+    padding: 2%;
    text-align: center;
    margin: 0 0 1% 0;
   }
@@ -66,9 +66,10 @@ h3{
   /* CONTAINER */
   
   .container{
-    padding: 2%;
+   
     text-align: center;
     background-image: url("../imagaenes/bg.jpg");
+    min-height: 89%;
     
 }
 
@@ -104,7 +105,7 @@ h3{
     width: 100%;
     text-align: center;
     overflow: hidden;
-    animation: nav 0.5s;
+    animation: nav 1s;
     
   }
   
@@ -136,7 +137,7 @@ h3{
   border-width: 1px;
   position: absolute;
   right: 0;
-  top: 62px;
+  top: 58px;
   background-color:#333;
   color: white;
   font-size: 12px;

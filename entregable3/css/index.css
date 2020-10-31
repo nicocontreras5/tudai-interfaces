@@ -1,40 +1,55 @@
-
+h1{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  width: 46%;
+  background-color:rgb(24, 23, 23);
+}
 /* PARALLAX */
 
 .parallax{
   height: 92%;
   background-image: url("../imagaenes/parallax/fast-and-furious-7-wallpaper-full-hd-1080p-62166.jpg");
-
+  background-size: cover;
   
 }
 
 #smoke{
   width: 100%;
   height: 100%;
- 
-  bottom: 0;
   right: 0;
-  background-image: url("../imagaenes/parallax/pngkit_blue-fog-png_9789886.png");   
+  top: 0;
+  margin-top: 7%;
+  position: absolute;
+  background-image: url("../imagaenes/parallax/niebla.png"); 
+
   background-repeat: repeat-x;  
-  animation: smoke 2s infinite linear; 
+  animation: smoke 40s infinite linear; 
 }
 
 @keyframes smoke {
   from {background-position-x: 0px;
     }
-  to {background-position-x: -2000px;
+  to {background-position-x: -3929px;
    
   }
 }
 
+#estreno{
+  width: 100%;
+  padding: 0  0 1% 0;
+  background-color: rgb(24, 23, 23);
+}
+
+
 
 #estreno-js {
-  background-color: #333;
+  
   color: rgb(255, 25, 25);
-  margin: 3% 30%;
+  
   padding: 1%;
   text-align: center;
- 
+  background-color: rgb(24, 23, 23);
 
   }
 
@@ -60,7 +75,8 @@
 
 
 .slideshow-container {
-  max-width: 40%;
+  max-width: 50%;
+ 
 
   position: relative;
   margin: auto;
@@ -134,8 +150,8 @@
 
 .escenas{
   text-align: center;
- 
-  margin: auto;
+  padding: 1% 0;
+  margin: 4% auto;
   margin-bottom: 3%;
 }
 
@@ -154,14 +170,16 @@
 }
 
 .cards{
-  
+  width: 100%;
+  background-color: rgb(24, 23, 23);
  text-align: center;
+ padding-bottom: 5%;
 }
 
 .flip-card {
   background-color: transparent;
   width: 260px;
-  height: 400px;
+  height: 425px;
   perspective: 1000px;
   margin: 1%;
   display: inline-block;
