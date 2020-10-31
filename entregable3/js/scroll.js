@@ -22,9 +22,15 @@ function loadPage() {
             
             escenas.classList.remove("entrada-escenas");
         }
+<<<<<<< HEAD
         
         // CARDS
         if (window.scrollY >= 920) {
+=======
+       
+
+        if (window.scrollY >= 870) {
+>>>>>>> e74632fdd515d02b73dae118345846bdfbf5988d
             
             cards.classList.add("entrada-cards");
         } else {
