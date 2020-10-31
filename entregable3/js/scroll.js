@@ -15,7 +15,7 @@ function loadPage() {
             
             escenas.classList.remove("entrada-escenas");
         }
-        console.log(window.scrollY );
+       
 
         if (window.scrollY >= 870) {
             
