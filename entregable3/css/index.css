@@ -2,14 +2,32 @@
 /* PARALLAX */
 
 .parallax{
-  height: 90%;
-  background-color: rgb(134, 131, 131);
+  height: 92%;
+  background-image: url("../imagaenes/parallax/fast-and-furious-7-wallpaper-full-hd-1080p-62166.jpg");
 
+  
 }
 
-/* ESTRENO */
-#estreno{
+#smoke{
+  width: 100%;
+  height: 100%;
+ 
+  bottom: 0;
+  right: 0;
+  background-image: url("../imagaenes/parallax/pngkit_blue-fog-png_9789886.png");   
+  background-repeat: repeat-x;  
+  animation: smoke 2s infinite linear; 
 }
+
+@keyframes smoke {
+  from {background-position-x: 0px;
+    }
+  to {background-position-x: -2000px;
+   
+  }
+}
+
+
 #estreno-js {
   background-color: #333;
   color: rgb(255, 25, 25);
@@ -124,15 +142,15 @@
 /* CARDS */
 
 @keyframes entrada-cards {
-  from {margin-left: -200%;
+  from {transform: translateX(-100%);
   } 
-  to {margin-left: 0;
+  to {transform:translateX(0);
   }
 }
 
 
 .entrada-cards{
-  animation: entrada-cards 1.5s;
+  animation: entrada-cards 1s;
 }
 
 .cards{
