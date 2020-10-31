@@ -16,7 +16,7 @@ function loadPage() {
         
         // ESCENAS
         
-        if (window.scrollY >= 300) {
+        if (window.scrollY >= 250) {
             escenas.classList.add("entrada-escenas");
         } else {
             
@@ -24,7 +24,7 @@ function loadPage() {
         }
         
         // CARDS
-        if (window.scrollY >= 920) {
+        if (window.scrollY >= 910) {
             
             cards.classList.add("entrada-cards");
         } else {

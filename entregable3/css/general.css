@@ -106,7 +106,7 @@ h3{
     width: 100%;
     text-align: center;
     overflow: hidden;
-    animation: nav 1s;
+    animation: nav 1s linear;
     
   }
   

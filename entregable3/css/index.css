@@ -178,7 +178,7 @@ h1{
   padding: 1% 0;
   margin: 4% auto;
   margin-bottom: 3%;
-  
+
 }
 
 /* CARDS */
@@ -192,7 +192,7 @@ h1{
 
 
 .entrada-cards{
-  animation: entrada-cards 1.5s;
+  animation: entrada-cards 1.5s linear;
 }
 
 .cards{

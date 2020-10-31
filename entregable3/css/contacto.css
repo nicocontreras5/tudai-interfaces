@@ -8,7 +8,7 @@
 }
 
 .container div {
-  animation: form 0.5s;
+ 
   text-align: center;
   width: 40%;
   margin:  auto; width: 100%;
@@ -18,7 +18,7 @@
 /* CONTACTO FORM */
 
 form{
-    animation: entradaForm 2s ;
+   
     padding: 2%;
     position: relative;
   
@@ -34,7 +34,7 @@ form{
     display: block;
     font-size: 100%;
    
-    
+    animation: form-label 1s linear;
   }
   
   form button{
@@ -47,6 +47,7 @@ form{
     font-size: 110%;
     transition: 2s;
     width: 20%;
+    animation: form-element 1s linear;
   }
   
   
@@ -55,7 +56,8 @@ form{
     padding: 0.5%;
     width: 50%;
    font-size: 150%;
-   
+   animation: form-element 1s linear;
+
   }
   
   form input:focus, form textarea:focus{
@@ -85,8 +87,12 @@ form{
     
   }
   
-@keyframes form {
+@keyframes form-label {
   0% {transform: translateX(100%); }
   100% {transform: translateX(0);}
 }
 
+@keyframes form-element {
+  0% {transform: translateX(-950px); }
+  100% {transform: translateX(0);}
+}
