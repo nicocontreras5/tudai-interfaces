@@ -10,28 +10,94 @@ h1{
 /* PARALLAX */
 
 .parallax{
+  position: relative;
   height: 92%;
   width: 100%;
   background-image: url("../imagaenes/parallax/fast-and-furious-7-wallpaper-full-hd-1080p-62166.jpg");
   background-size: cover;
+  overflow: hidden;
+}
+
+#nitro{
+  position: absolute;
+ right: 0;
+  
+  top: 65%;
+  width: 100%;
+  height: 25%;
+  padding: 2%;
+  
+ animation: translate 15s infinite linear;
+ overflow: hidden;
+}
+
+#nitro img{
+  position: absolute;
+  left: 0;
+  height: 60%;
+  margin: 2%;
+  animation: nitro 2.5s infinite linear;
   
 }
 
+
+@keyframes translate {
+  from {
+    transform: translate(100%);
+
+       
+
+    }
+  to {
+    transform: translate(-10%);
+   
+  }
+}
+
+@keyframes nitro {
+  from {transform: rotate(0);
+       
+
+    }
+  to {transform: rotate(-360deg);
+   
+  }
+}
+
+
+
+#particle{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-image: url("../imagaenes/parallax/PikPng.com_particles-png_563202.png");
+  
+  animation: smoke 400s infinite linear; 
+}
+
 #smoke{
+  position: absolute;
+  top: -0;
   width: 100%;
   height: 100%;
   background-size: cover;
   background-image: url("../imagaenes/parallax/niebla.png");  
-  animation: smoke 40s infinite linear; 
+  animation: smoke 90s infinite linear; 
 }
 
+
+
 @keyframes smoke {
-  from {background-position-x: 0px;
+  from {background-position-x:15000px;
+
     }
-  to {background-position-x: -3929px;
+  to {background-position-x:  -3929px;
    
   }
 }
+
+
 
 #estreno{
   position: relative;

@@ -10,8 +10,6 @@ function loadPage() {
         
         
         let escenas = document.querySelector(".escenas");
-        let mover = 0;
-        // CAR
         
         
         // ESCENAS
@@ -31,6 +29,10 @@ function loadPage() {
             
             cards.classList.remove("entrada-cards");
         }
+
+        
+        let mover = 0;
+        // CAR
         mover = window.scrollY*2.5;
         car.style.marginRight  =  mover   + "px";
         
