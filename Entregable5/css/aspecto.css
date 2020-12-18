@@ -677,7 +677,6 @@ hr{
     width: 92%;
     height: auto;
     margin-left: 5%;
-    
 }
 
 .carrousel article .inner .back a{
@@ -962,7 +961,6 @@ h1{
   position: absolute;
   backface-visibility: hidden;
   box-shadow: 10px 10px 18px 0 rgba(0, 0, 0, 0.685);
-  
 
 
 }
@@ -980,7 +978,6 @@ h1{
 .inner{
     transition: transform 0.6s;
     transform-style: preserve-3d;
-
 }
 
 
@@ -995,7 +992,6 @@ h1{
     border-radius: 50%;
     box-shadow: 10px 10px 8px 0 rgba(0, 0, 0, 0.685);
     height: auto;
-  
 }
 
 .carrousel article .inner .back :nth-child(2){
@@ -1005,7 +1001,6 @@ h1{
 .active{ 
    color: #F7A325;   
 }
-
 
 
 
@@ -1215,7 +1210,8 @@ table{
 }
 
 .votosRecientes2 article:hover{
-  
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
     box-shadow: 10px 10px 18px 0 rgba(0, 0, 0, 0.685);
     animation: efectoVoto 1s forwards;
 }
@@ -1365,6 +1361,18 @@ table tr :first-child {
     width: 10%;
     
 }
+.votosRecientes2 article{
+    display: flex;
+    flex-direction: column;
+    max-width: 100px;
+    margin-right: 3%;
+    height: 200px;
+    justify-content: space-between;
+}
+  
+
+  
+
 
  
 
