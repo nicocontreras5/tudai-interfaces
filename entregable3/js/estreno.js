@@ -8,7 +8,7 @@ function loadPage() {
     
 
     let intervalo = setInterval(function () {
-        let fechaEstreno = new Date("oct 27, 2021 00:00:00").getTime();
+        let fechaEstreno = new Date("oct 27, 2024 00:00:00").getTime();
 
 
         let now = new Date().getTime();
