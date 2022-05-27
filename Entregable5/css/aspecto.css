@@ -931,7 +931,7 @@ h1{
     display: flex;
     padding: 10%;
     justify-content: space-between !important;
-    margin-top: 3% !important;
+    margin-top: 7px !important;
     margin-bottom: 0;
     transform: rotateY(180deg) translateZ(15px);
     backface-visibility: hidden;
